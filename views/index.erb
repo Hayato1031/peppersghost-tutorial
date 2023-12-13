@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>LINE×Websocket</title>
+		<link rel="stylesheet" href="/assets/stylesheets/peppersghost.css">
+	</head>
+	<body>
+		<div class="center">
+			<div class="white-color">
+				<div id="messages"></div>
+			</div>
+		</div>
+	
+	    <script>
+	      if (location.protocol === 'https:') {
+	        var ws = new WebSocket('wss://' + location.host + '/websocket');
+	      } else {
+	        var ws = new WebSocket('ws://' + location.host + '/websocket');
+	      }
+	
+	      ws.onopen = function() {
+	        console.log('connected');
+	      };
+	
+	      ws.onmessage = function(e) {
+	      	var text = e.data; 
+			var message = document.createElement('h1'); 
+
+			//以下2行を消せば複数のメッセージが表示可能
+			var messagesDiv = document.querySelector('#messages');
+			messagesDiv.innerHTML = '';
+			
+			message.innerHTML = '<strong>' + text + '</strong> ';
+			document.querySelector('#messages').appendChild(message); 
+	      };
+	
+	      ws.onclose = function() {
+	        console.log('disconnected');
+	      };
+	    </script>
+	</body>
+</html>
