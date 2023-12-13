@@ -1,27 +1,47 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (6.1.7.6)
+      activesupport (= 6.1.7.6)
+    activerecord (6.1.7.6)
+      activemodel (= 6.1.7.6)
+      activesupport (= 6.1.7.6)
+    activesupport (6.1.7.6)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
+    concurrent-ruby (1.2.2)
     dotenv (2.8.1)
     eventmachine (1.2.7)
     faye-websocket (0.11.3)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
+    i18n (1.14.1)
+      concurrent-ruby (~> 1.0)
     line-bot-api (1.28.0)
+    minitest (5.20.0)
     multi_json (1.15.0)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.7.0)
+    pg (1.5.4)
     puma (6.4.0)
       nio4r (~> 2.0)
     rack (2.2.8)
     rack-protection (2.2.4)
       rack
+    rake (13.1.0)
     ruby2_keywords (0.0.5)
     sinatra (2.2.4)
       mustermann (~> 2.0)
       rack (~> 2.2)
       rack-protection (= 2.2.4)
       tilt (~> 2.0)
+    sinatra-activerecord (2.0.27)
+      activerecord (>= 4.1)
+      sinatra (>= 1.0)
     sinatra-contrib (2.2.4)
       multi_json
       mustermann (~> 2.0)
@@ -29,19 +49,26 @@ GEM
       sinatra (= 2.2.4)
       tilt (~> 2.0)
     tilt (2.3.0)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord (~> 6.1)
   dotenv
   faye-websocket
   line-bot-api
+  pg (~> 1.2)
   puma
+  rake (~> 13.0)
   sinatra (~> 2.1)
+  sinatra-activerecord (~> 2.0)
   sinatra-contrib (~> 2.1)
 
 RUBY VERSION

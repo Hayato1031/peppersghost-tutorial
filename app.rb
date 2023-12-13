@@ -1,6 +1,8 @@
 require 'bundler/setup'
 Bundler.require
+require 'sinatra/activerecord'
 require 'sinatra/reloader' if development?
+require './models'
 Dotenv.load
 require 'faye/websocket'
 set :sockets, []
@@ -29,6 +31,9 @@ post '/webhook' do
                     text: event.message['text']
                 }
                 client.reply_message(event['replyToken'], message)
+                
+                #履歴の作成
+                History.create(text: event.message['text'])
                 
                 # WebSocketを通じて受信したメッセージを送信する
                 settings.sockets.each do |socket|
